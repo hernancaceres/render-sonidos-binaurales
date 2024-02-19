@@ -73,6 +73,11 @@ const BinauralBeatGenerator = () => {
     setVolume(newVolume);
   };
 
+  const handlePresetButtonClick = (leftFreq, rightFreq) => {
+    setLeftFrequency(leftFreq);
+    setRightFrequency(rightFreq);
+  };
+
   return (
     <div>
       <button onClick={handleClick}>{isPlaying ? 'Parar' : 'Iniciar'}</button>
@@ -86,6 +91,7 @@ const BinauralBeatGenerator = () => {
           value={leftFrequency}
           onChange={handleLeftFrequencyChange}
         />
+        <span>{leftFrequency.toFixed(2)} Hz</span>
       </div>
       <div>
         <label>Derecho:</label>
@@ -97,6 +103,7 @@ const BinauralBeatGenerator = () => {
           value={rightFrequency}
           onChange={handleRightFrequencyChange}
         />
+        <span>{rightFrequency.toFixed(2)} Hz</span>
       </div>
       <div>
         <label>Volumen:</label>
@@ -109,13 +116,17 @@ const BinauralBeatGenerator = () => {
           onChange={handleVolumeChange}
         />
       </div>
+      <div>
+        <button onClick={() => handlePresetButtonClick(111, 113)}>Frecuencia 1</button>
+        <button onClick={() => handlePresetButtonClick(222, 224)}>Frecuencia 2</button>
+        <button onClick={() => handlePresetButtonClick(333, 337)}>Frecuencia 3</button>
+        <button onClick={() => handlePresetButtonClick(444, 448)}>Frecuencia 4</button>
+      </div>
     </div>
   );
 };
 
 export default BinauralBeatGenerator;
-
-
 
 
 
@@ -126,8 +137,16 @@ export default BinauralBeatGenerator;
 //   const [isPlaying, setIsPlaying] = useState(false);
 //   const [leftFrequency, setLeftFrequency] = useState(333);
 //   const [rightFrequency, setRightFrequency] = useState(337);
+//   const [volume, setVolume] = useState(0.5);
 //   const [leftSynth, setLeftSynth] = useState(null);
 //   const [rightSynth, setRightSynth] = useState(null);
+
+//   useEffect(() => {
+//     if (leftSynth && rightSynth) {
+//       leftSynth.volume.value = Tone.gainToDb(volume);
+//       rightSynth.volume.value = Tone.gainToDb(volume);
+//     }
+//   }, [volume, leftSynth, rightSynth]);
 
 //   useEffect(() => {
 //     if (leftSynth) {
@@ -181,6 +200,11 @@ export default BinauralBeatGenerator;
 //     setRightFrequency(newRightFrequency);
 //   };
 
+//   const handleVolumeChange = (event) => {
+//     const newVolume = parseFloat(event.target.value);
+//     setVolume(newVolume);
+//   };
+
 //   return (
 //     <div>
 //       <button onClick={handleClick}>{isPlaying ? 'Parar' : 'Iniciar'}</button>
@@ -194,6 +218,7 @@ export default BinauralBeatGenerator;
 //           value={leftFrequency}
 //           onChange={handleLeftFrequencyChange}
 //         />
+//         <span>{leftFrequency.toFixed(2)} Hz</span>
 //       </div>
 //       <div>
 //         <label>Derecho:</label>
@@ -205,9 +230,22 @@ export default BinauralBeatGenerator;
 //           value={rightFrequency}
 //           onChange={handleRightFrequencyChange}
 //         />
+//         <span>{rightFrequency.toFixed(2)} Hz</span>
+//       </div>
+//       <div>
+//         <label>Volumen:</label>
+//         <input
+//           type="range"
+//           min="0"
+//           max="1"
+//           step="0.01"
+//           value={volume}
+//           onChange={handleVolumeChange}
+//         />
 //       </div>
 //     </div>
 //   );
 // };
 
 // export default BinauralBeatGenerator;
+

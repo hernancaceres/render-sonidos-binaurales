@@ -1,4 +1,6 @@
 
+
+
 import BinauralBeatGenerator from './components/BinauralBeatGenerator';
 import Player from './components/Player';
 import SineWaveGenerator from './components/SineWaveGenerator';
@@ -24,3 +26,5 @@ function App() {
 }
 
 export default App;
+
+
