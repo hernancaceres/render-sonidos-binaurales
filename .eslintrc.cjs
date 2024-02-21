@@ -11,6 +11,9 @@ module.exports = {
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
   settings: { react: { version: '18.2' } },
   plugins: ['react-refresh'],
+  globals: {
+    echarts: 'readonly' // Permite el uso de echarts como variable global de solo lectura
+  },
   rules: {
     'react/jsx-no-target-blank': 'off',
     'react-refresh/only-export-components': [
@@ -18,4 +21,4 @@ module.exports = {
       { allowConstantExport: true },
     ],
   },
-}
+};
